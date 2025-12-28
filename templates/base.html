@@ -8,7 +8,19 @@
 <body>
 <h1>Старости</h1>
 <div class="d-flex p-2">
+    {% if user.is_editor %}
     <a href="{{ url_for('add_new') }}" class="btn btn-success me-2">Добавить новость</a>
+    {% endif %}
+    {% if user %}
+    <span>{{ user.email }}</span>
+    {% if user.is_editor %}
+    <span>Редактор</span>
+    {% endif %}
+    <a href="{{ url_for('logout') }}" class="btn btn-success me-2">Выйти</a>
+    {% else %}
+    <a href="{{ url_for('register') }}" class="btn btn-success me-2">Зарегистрироваться</a>
+    <a href="{{ url_for('login') }}" class="btn btn-success me-2">Авторизоваться</a>
+    {% endif %}
 </div>
 {% block content %}{% endblock %}
 </body>

@@ -5,7 +5,8 @@
     {% for new in news %}
     <div class="post mb-4 pb-3 border-bottom">
         <h3>{{ new.topic }}</h3>
-        <p>{{ new.text }}</p>
+        <p class="fs-4">{{ new.text }}</p>
+        <p>{{ new.created_on.strftime('%d.%m-%Y %H:%M:%S') }}</p>
     </div>
     {% else %}
     <p>Постов пока нет.</p>

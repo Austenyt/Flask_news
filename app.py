@@ -73,16 +73,23 @@ def login():
             return render('login.html', error='Пользователь не найден')
 
 
-@app.route('/add_post', methods=['GET', 'POST'])
+@app.route('/logout', methods=['GET'])
+def logout():
+    del session['user_id']
+    return redirect(url_for('index'))
+
+
+@app.route('/add_new', methods=['GET', 'POST'])
 def add_new():
     if 'user_id' not in session:
         return redirect(url_for('login'))
-
+    if not request.user.is_editor:
+        return redirect(url_for('index'))
     if request.method == 'POST':
         topic = request.form['topic']
         text = request.form['text']
 
-        blog = News.create(
+        News.create(
             topic=topic,
             text=text,
         )

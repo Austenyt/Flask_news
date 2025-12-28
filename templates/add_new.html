@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1 class="mb-4">Добавить новость</h1>
-<form method="post" action="{{ url_for('add_post') }}" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="topic" class="form-label">Тема</label>
         <input type="text" class="form-control" id="topic" name="topic" required/>

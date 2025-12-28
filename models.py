@@ -13,6 +13,7 @@ class Base(Model):
 class User(Base):
     email = CharField(unique=True)
     password_hash = CharField()
+    is_editor = BooleanField(default=False)
 
 
 class News(Base):
